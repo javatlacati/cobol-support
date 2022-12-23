@@ -1,0 +1,48 @@
+<idea-plugin>
+  <id>com.ibm.intellij.plugins</id>
+  <name>COBOL support for Idea</name>
+  <version>0.1-SNAPSHOT</version>
+  <vendor url="http://www.ibm.com">IBM</vendor>
+
+  <description><![CDATA[
+      <h2>Language support for Open COBOL.</h2>
+      If you need it for another version of cobol request it to ruslan.lopez@ibm.com
+    ]]>
+  </description>
+
+  <change-notes><![CDATA[
+      First release
+      <ul>
+        <li>Filetype</li>
+        <li>Color Settings Page in configuration</li>
+        <li>Syntax Analysis PoC</li>
+      </ul>
+    ]]>
+  </change-notes>
+
+  <!-- please see https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <fileType name="COBOL"
+              implementationClass="com.ibm.intellij.plugins.cobol.CobolFileType"
+              fieldName="INSTANCE"
+              language="COBOL"
+              extensions="cob;cbl;ccp;cb2"/>
+    <lang.syntaxHighlighterFactory language="COBOL"
+                                   implementationClass="com.ibm.intellij.plugins.cobol.CobolSyntaxHighlighterFactory"/>
+    <lang.parserDefinition language="COBOL"
+                           implementationClass="com.ibm.intellij.plugins.cobol.CobolParserDefinition"/>
+    <colorSettingsPage implementation="com.ibm.intellij.plugins.cobol.CobolColorSettingsPage"/>
+    <lang.commenter language="COBOL" implementationClass="com.ibm.intellij.plugins.cobol.CobolCommenter" />
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+  </actions>
+
+</idea-plugin>
